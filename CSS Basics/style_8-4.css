@@ -1,0 +1,43 @@
+
+
+body{
+    background-color: #333;
+    
+}
+h1{
+    color:green;
+    text-align: center;
+    font-size: 30px; 
+    text-decoration: underline;
+}
+
+caption{
+    color: yellow;
+    margin: 20px;
+}
+
+table {
+  color: white;
+  margin: auto;
+}
+
+table tr:not(:first-child) td:first-child {
+  color: orange;
+}
+
+
+table tr:first-child {
+  color: greenyellow;
+}
+
+
+table tr:nth-child(odd) {
+  background-color: #333; 
+}
+
+
+table tr:nth-child(even) {
+  background-color: #332; 
+}
+
+

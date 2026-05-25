@@ -1,0 +1,52 @@
+
+
+
+.box {
+      width: 120px;
+      height: 80px;
+      color: rgb(52, 104, 74);
+      font: 60px Segoe UI;
+}
+
+#container {
+   width: 225px;
+   height: 140px;
+   background-color: rgb(189, 186, 186);
+   box-shadow: 5px 5px 10px black;
+}
+
+#first {
+   width:50px;
+   height: 50px;
+   background-color: rgb(63, 189, 147); 
+   display: inline-block;
+   margin-right: 10px;
+   border-color: black;
+   border-width: 1px;
+   border-style: solid;
+}
+
+#second {
+   width:50px;
+   height: 50px;
+   display: inline-block;
+   background-color: rgb(230, 157, 47); 
+   margin-right: 10px;
+   border-color: black;
+   border-width: 1px;
+   border-style: solid;
+}
+
+.prompt {
+    color: black
+}
+
+.button{
+    background-color: lightgreen;
+    border-color: green;
+    display: inline-block;
+}
+
+input[type="number"] {
+    display: inline-block;
+}

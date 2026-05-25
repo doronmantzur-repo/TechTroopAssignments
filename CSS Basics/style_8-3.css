@@ -1,0 +1,44 @@
+h2{
+    color:red;
+    width:82%;   
+    border-bottom: 3px solid red; 
+    padding-bottom: 5px;
+    
+}
+h1{
+    color:orange;
+    text-align: center;
+    font-size: 50px;  
+}
+h3{
+    color:rgb(109, 174, 221);
+}
+
+body{
+    background-color: rgb(5, 45, 70);
+    
+}
+
+
+.yellow{
+    color:yellow;
+    font-weight: bold;;
+}
+
+.white{
+    color:white;
+}
+
+a{
+    color:green;
+}
+
+ul{
+    background-color: rgb(5,60,110);
+
+}
+
+img{
+    border: 2px solid rgb(180, 171, 171);
+    border-radius: 2%;
+}

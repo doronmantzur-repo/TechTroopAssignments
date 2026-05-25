@@ -1,0 +1,176 @@
+.class_1  {
+      width: 800px;
+      height: 50px;
+      color:blue;
+      font: 90px Arial, sans-serif;
+    }
+
+.class_2  {
+      width: 400px;
+      height: 50px;
+      color: rgb(89, 128, 89);
+      font: 60px David, sans-serif;
+    }
+
+.class_3  {
+      width: 1200px;
+      height: 80px;
+      color: rgb(125, 198, 66);
+      font: 60px Segoe UI;
+    }
+
+div {
+    width:100px;
+    height: 50px;
+    background-color: rgb(246, 233, 93);
+    font-family: Arial;
+    font-size:14px;
+    color:rgb(2, 2, 146);
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items:center;      /* vertical */
+    margin-right: 10px;
+    float:left;
+}
+
+.box {
+      width: 120px;
+      height: 80px;
+      color: rgb(52, 104, 74);
+      font: 60px Segoe UI;
+}
+
+#first {
+   width:200px;
+   height: 50px;
+   background-color: aquamarine; 
+   margin-right: 10px;
+   border-color: black;
+   border-width: 1px;
+   border-style: solid;
+}
+
+#second {
+   width:200px;
+   height: 50px;
+   background-color: rgb(202, 255, 127); 
+   margin-right: 10px;
+   border-color: black;
+   border-width: 1px;
+   border-style: solid;
+}
+
+
+table {
+    border-collapse: collapse;
+    border: 1px solid gray
+}
+
+td {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: none;
+    border-right: none;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    
+}
+
+tr:first-child { background-color: lightgray; }
+tr:not(:first-child) { background-color: lightgreen; }
+
+
+/* Column widths */
+.col1 { width: 40px; }
+.col2 { width: 200px; }
+.col3 { width: 40px; }
+.col4 { width: 30px; }
+.col5 { width: 30px; }
+.col6 { width: 30px; }
+.col7 { width: 40px; }
+.col8 { width: 40px; }
+
+.recipe {
+    display:inline-block;
+    color:blue;
+    text-decoration: underline;
+    font-family: 'Arial', Courier, monospace;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    
+}
+
+.hero {
+    position: relative; /* makes absolute children use this box */
+    display: block;
+    width:100%;
+}
+
+.h1-transparent{
+    position:absolute;
+    top:0;
+    left:0;
+    font-size: 50px;
+    background-color: blueviolet;
+    opacity: 0.3;
+}
+
+.h1-not-transparent{
+    position:absolute;
+    top: 70px;;
+    left:0;
+    font-size: 50px;
+    background-color: blueviolet;
+}
+
+img {
+    display: block;
+    width: 60%;
+}
+
+h1{
+    text-decoration: underline;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:60px;
+    color:rgb(183, 44, 64)
+}
+
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:60px;
+    color:rgb(97, 27, 210);
+    margin: 10;
+}
+
+body{
+    background-color: aliceblue;
+}
+
+.highlight-purple{
+    color:purple;
+    font-weight: bold;
+}
+
+.highlight-italic{
+    color:rgb(45, 186, 45);
+    font-style: italic;
+}
+
+p{
+    font-size: 20px;
+}
+
+.blue-line{
+    border:none;
+    height: 4px;
+    background-color: rgb(141, 141, 213);
+    margin:0;
+}
+
+.black-line{
+    border:none;
+    height: 4px;
+    background-color: black;
+    margin:0;
+} 
+

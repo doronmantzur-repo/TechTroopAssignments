@@ -1,0 +1,31 @@
+
+fieldset{
+  border-color: aqua;
+  width:30%;
+  background-color:rgb(176, 195, 198);
+  border-radius: 8px;
+}
+
+legend{
+  color: aqua;
+  font-weight: bold;
+  background-color: white;
+}
+
+fieldset label{
+  color: blue;
+}
+
+p{
+  color: blue;
+}
+
+.red-button{
+  background-color: red;
+  color: white;
+}
+
+.green-button{
+  background-color: green;
+  color: white;
+}
