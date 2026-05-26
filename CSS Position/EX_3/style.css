@@ -1,0 +1,49 @@
+.container{
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-color: blue;
+    border-radius: 5px;
+   
+
+}
+
+div.table-label{
+    position: absolute;
+    font-weight: bold;
+    
+}
+
+div.vertical-line{
+    position: absolute;
+    width: 25px;
+    height: 100%;
+    background-color: gray;
+    bottom: 5px
+}
+
+#pos-1{
+    left: 10px; height:40%
+}
+#pos-2{
+    left: 60px; height:60%
+}
+#pos-3{
+    left: 110px; height:80%
+}
+#pos-4{
+    left: 160px; height:70%
+}
+#pos-5{
+    left: 210px; height:50%
+}
+#pos-6{
+    left: 260px; height:30%
+}
+#money{
+    left: 10px;
+}
+#time{
+    right: 10px;
+    bottom: 0;
+}
