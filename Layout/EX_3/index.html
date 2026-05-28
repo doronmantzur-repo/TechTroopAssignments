@@ -1,0 +1,77 @@
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Exercise 3</title>
+      </head>
+      <body>
+        <div class="form-bcg">
+          <div class="form">
+            <header>
+              <div class="top">Contact Form</div>
+              <div class="bottom">Get in touch with us</div>
+            </header>
+            <div class="name-container">
+              <div class="label" for="first-name">First Name</div>
+              <div class="label" for="last-name">Last Name</div>
+            </div>
+            <div class="name-input">
+              <input type="text" id="first-name" placeholder="Enter your first name">
+              <input type="text" id="last-name" placeholder="Enter your last name">
+            </div>
+            <div class="name-container">
+              <div class="label" for="email">Email Address</div>
+            </div>
+            <div class="name-input">
+              <input type="text" id="email" placeholder="Enter your email address">
+            </div>
+            <div class="name-container">
+              <div class="label" for="subject">Subject</div>
+              <div class="label" for="priority">Priority</div>
+            </div>
+            <div class="name-input">
+              <select id="subject">
+                  <option value = ""> Select subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Support Request</option>
+                  <option value="feedback">Feedback</option>
+              </select>
+              <select id="priority">
+                  <option value = "">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+              </select>
+            </div>
+            <div class="name-container">
+              <div class="label" for="message">Message</div>
+            </div>
+            <div class="name-input">
+              <textarea id="message" placeholder="Enter your message"></textarea>
+            </div>
+            <div class="name-container">
+              <div class="label">Contact Preferences</div>
+            </div>
+            <div class="checkbox-container">
+              <div>
+                <input type = "radio" id="email-updates" name = "contact-preferences" value="email-updates">
+                <label for = "email-updates"></label>Email Updates</label>
+              </div>
+              <div>
+                <input type = "radio" id="phone" name = "contact-preferences" value="phone ">
+                <label for = "phone">Phone Follow-up</label>
+              </div>
+              <div>
+                <input type = "radio" id="newsletter" name = "contact-preferences" value="newsletter">
+                <label for = "newsletter">Newsletter</label>
+              </div>
+            </div>
+            <div class = "button-container">
+              <button class = "left">Save Draft</button>
+              <button class = "right">Send Message</button>
+            </div>
+
+          </div>
+
+        </div>
+      </body>
+    </html>

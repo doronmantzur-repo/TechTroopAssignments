@@ -1,0 +1,39 @@
+.flex-container{
+    display:flex;
+    border: 1px solid lightgray;
+}
+
+.ex3 > .flex-container{
+    height: 500px;
+    width: 700px;
+    justify-content: space-between;
+    margin:10px;
+}
+
+
+.flex-container > .box{
+    display:flex;
+    position:relative;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-top: 4px solid lightgray;
+    border-style: double;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box > .blue-circle {
+  width: 100px;
+  height: 100px;
+  background-color: blue;   
+  border-radius: 50%;  
+
+    
+}
+
+.box > .text {
+    padding-inline: 20px;
+
+}

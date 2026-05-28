@@ -1,0 +1,40 @@
+.flex-container{
+    display: flex;
+    border: 1px solid black;
+}
+
+
+.ex2 > .flex-container{
+    height: 100px;
+    width: 600px;
+    justify-content: space-between;
+    margin:10px;
+}
+
+
+.flex-container > .box{
+     background-color: rgb(76, 159, 186);
+     flex-grow: 1;
+     margin:2px;
+     font-size: 30px;
+}
+
+ .flex-container > .box-1{
+     background-color: rgb(76, 159, 186);
+     margin:2px;
+     font-size: 30px;
+     flex: 1;
+    
+}
+.flex-container > .box-2{
+     background-color: rgb(76, 159, 186);
+     margin:2px;
+     font-size: 30px;
+     flex: 2;
+}
+.flex-container > .box-3{
+     background-color: rgb(76, 159, 186);
+     margin:2px;
+     font-size: 30px;
+     flex: 2;
+}
