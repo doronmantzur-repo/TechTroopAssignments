@@ -1,0 +1,27 @@
+
+div {
+  width: 100%;
+  height: 150px;
+  border: solid;
+}
+
+
+/* Mobile First (no media queries) up to 600px */
+div {
+  background-color: rgb(158, 17, 45);
+}
+
+/* Tablet 601px to 900px */
+@media (min-width: 768px) {
+  div {
+    width: 300px;
+    background-color: rgb(68, 24, 164);
+  }
+}
+
+/* Desktop 901px and above */
+/* @media (min-width: 901px) {
+  div {
+    background-color: cyan;
+  }
+} */

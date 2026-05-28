@@ -1,0 +1,37 @@
+
+h1 {
+  font-size:48px;
+}
+
+p {
+  font-size:18px;
+}
+
+
+/* Mobile First (no media queries) up to 600px */
+  h1 {
+    font-size: 24px;
+  }
+  p {
+    font-size: 14px;
+  }
+
+/* Tablet 601px to 900px */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+
+/* Desktop 901px and above */
+@media (min-width: 901px) {
+  h1 {
+    font-size: 48px;
+  }
+  p {
+    font-size: 18px;
+  }
+}
