@@ -23,7 +23,7 @@ const posts = [
 
 for (const post of posts) {
   if (post.id === 2) {
-    for (i = 0; i < post.comments.length; i++) {
+    for (let i = 0; i < post.comments.length; i++) {
       if (post.comments[i].id === 3) {
         post.comments.splice(i, 1);
       }

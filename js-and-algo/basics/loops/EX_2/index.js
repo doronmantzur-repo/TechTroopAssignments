@@ -3,7 +3,7 @@ const ages = [23, 47, 18]
 const people = []
 
 
-for (i = 0; i < names.length; i++) {
+for (let i = 0; i < names.length; i++) {
   people.push({name: names[i],age: ages[i] });
 }
 
