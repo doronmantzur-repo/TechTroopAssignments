@@ -1,0 +1,16 @@
+function increaseByNameLength(money, name) {
+  return name.length * money;
+}
+
+function makeRegal(name) {
+  return `His Royal Highness, ${name}`;
+}
+const turnToKing = function (name, money) {
+  name = name.toUpperCase();
+  money = increaseByNameLength(money, name);
+  name = makeRegal(name);
+
+  console.log(name + " has " + money + " gold coins");
+};
+
+turnToKing("martin luther", 100);
