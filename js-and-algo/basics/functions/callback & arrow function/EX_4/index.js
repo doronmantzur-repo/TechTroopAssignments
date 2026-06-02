@@ -1,0 +1,1 @@
+const sumArrowFunc = (a,b,c) => {return a + b + c;};
