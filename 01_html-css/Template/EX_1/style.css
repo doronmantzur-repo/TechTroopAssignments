@@ -1,0 +1,43 @@
+
+.box{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    background-color: aliceblue;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box img {
+    
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    opacity: 0.8;
+}
+
+.top-right{
+    position: absolute;
+    top: 0;
+}
+.top-left{
+    position: absolute;
+    top: 0;
+    right: 0;  
+}
+.bottom-right{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.bottom-left{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+body{
+    margin: 0;
+}
