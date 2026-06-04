@@ -103,20 +103,39 @@
 // console.log(countVowels("aeaeae")) // Output: 3
 // console.log(countVowels("Algorithm"))   // Output: 3
 
-const isEnough = false
+// 
 
-const makeEnough = function () {
-    for (let i = 0; i < 10; i++) {
-        if (i > 5) {
-            isEnough = true
+// const distributions = {
+//   1: {},
+//   2: {},
+//   3: {}
+// }
+
+// distributions[1]["a"] = 1
+// console.log(distributions)
+
+const findDuplicates = function (ages) {
+    const arr = new Array(ages.length).fill(false);
+
+    for (let i = 0; i < ages.length; i++) {
+
+        for (let j = i + 1; j < ages.length; j++) {
+            if(arr[j]) break;
+            if (ages[i] === ages[j]) {
+                console.log(`${ages[i]} has a duplicate`);
+                arr[j] = true;
+            }
         }
+       
     }
 }
 
-makeEnough()
-if (isEnough) {
-    console.log("Finally, sheesh")
+const data = {
+    "ax01":{name: "Ray", age:28, salary: 1300},
+    "qs84":{name: "Lucius", age:31, salary: 840},
+    "bg33":{name: "Taylor", age:18, salary: 2700}
 }
-else {
-    console.log("Here we go again...")
+
+function findEmployeeSalary(employeeID){
+    return data[employeeID]?.salary;
 }
