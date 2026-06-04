@@ -93,12 +93,30 @@
 // Input:  "hello world" →  Output: 3
 // Input:  "Algorithm"   →  Output: 3
 
-function countVowels(str) {
+// function countVowels(str) {
 
-  const vowels = "aeiouAEIOU";
-  const chars = str.split("");
-  return chars.reduce((counter, char) => {if (vowels.includes(char)) { counter++};return counter},0)
+//   const vowels = "aeiouAEIOU";
+//   const chars = str.split("");
+//   return chars.reduce((counter, char) => {if (vowels.includes(char)) { counter++};return counter},0)
+// }
+
+// console.log(countVowels("aeaeae")) // Output: 3
+// console.log(countVowels("Algorithm"))   // Output: 3
+
+const isEnough = false
+
+const makeEnough = function () {
+    for (let i = 0; i < 10; i++) {
+        if (i > 5) {
+            isEnough = true
+        }
+    }
 }
 
-console.log(countVowels("aeaeae")) // Output: 3
-console.log(countVowels("Algorithm"))   // Output: 3
+makeEnough()
+if (isEnough) {
+    console.log("Finally, sheesh")
+}
+else {
+    console.log("Here we go again...")
+}
