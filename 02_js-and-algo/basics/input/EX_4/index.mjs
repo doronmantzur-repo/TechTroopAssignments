@@ -14,11 +14,19 @@ while (true) {
   } else if (selectedOption === "2") {
     console.log("Enter amount to deposit:");
     let amount = Number(prompt());
+    while (isNaN(amount) || amount <= 0) {
+      console.error("Invalid amount. Please enter a number.");
+      amount = Number(prompt());
+    }
     let newBalance = bank.deposit(amount);
     console.log(`${amount} deposited. Your new balance is: ${newBalance}\n`);
   } else if (selectedOption === "3") {
     console.log("Enter amount to withdraw:");
     let amount = Number(prompt());
+    while (isNaN(amount) || amount <= 0) {
+      console.error("Invalid amount. Please enter a number.");
+      amount = Number(prompt());
+    }
     let newBalance = bank.withdraw(amount);
     console.log(`${amount} withdrawn. Your new balance is: ${newBalance}\n`);
   } else if (selectedOption === "4") {
