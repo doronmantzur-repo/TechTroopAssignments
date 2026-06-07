@@ -21,18 +21,15 @@
 //   return acc;
 // }, {});
 
-
 // const add = function(a){
 //     return function(b){
 //         return a + b;
 //     }
 // }
 
-
 // console.log(add(5)(2));
 // console.log(count(sentence));
 // console.log(newCount);
-
 
 //#1
 // Given an array of integers, return the largest number in the array.
@@ -49,13 +46,11 @@
 
 // function findMax(arr) {
 //   return arr.reduce((max, number) => {if (number > max) {max = number}; return max}, arr[0])
-// } 
+// }
 
-
-// const numbers = [-5, -1, -8, -3] 
+// const numbers = [-5, -1, -8, -3]
 // const max = findMax(numbers)
 // console.log(max)
-
 
 //#2
 // Given a string, return it reversed.
@@ -103,7 +98,7 @@
 // console.log(countVowels("aeaeae")) // Output: 3
 // console.log(countVowels("Algorithm"))   // Output: 3
 
-// 
+//
 
 // const distributions = {
 //   1: {},
@@ -114,28 +109,97 @@
 // distributions[1]["a"] = 1
 // console.log(distributions)
 
-const findDuplicates = function (ages) {
-    const arr = new Array(ages.length).fill(false);
+// const numbers = [8, 9, 12, 3, 5, 9, 1, 11, 4, 8];
+// for (let i = 0; i < numbers.length; i++) {
+//     for(let j = i + 1; j < numbers.length; j++){
+//         if (numbers[i] === numbers[j]) {
+//             console.log(`${numbers[i]} has a duplicate`);
+//         }
+//     }
+// }
 
-    for (let i = 0; i < ages.length; i++) {
+// const numbers = [8, 9, 12, 3, 5, 9, 1, 11, 4, 8];
+// sortedNumbers = numbers.sort((a, b) => a - b);
+// for(let i=0; i< sortedNumbers.length - 1; i++){
+//     if(sortedNumbers[i] === sortedNumbers[i+1]){
+//         console.log(`${sortedNumbers[i]} has a duplicate`);
+//     }
+// }
 
-        for (let j = i + 1; j < ages.length; j++) {
-            if(arr[j]) break;
-            if (ages[i] === ages[j]) {
-                console.log(`${ages[i]} has a duplicate`);
-                arr[j] = true;
-            }
+// const numbers = [8, 9, 12, 3, 5, 9, 1, 11, 4, 8];
+// const target = 15;
+
+// for (let i = 0; i < numbers.length; i++) {
+//   for (let j = i + 1; j < numbers.length; j++) {
+//     if (numbers[i] + numbers[j] === target) {
+//       console.log(`${numbers[i]} and ${numbers[j]} sum to ${target}`);
+//     }
+//   }
+// }
+
+// const numbers = [8, 9, 12, 3, 5, 9, 1, 11, 4, 8];
+// const target = 17;
+// sortedNumbers = numbers.sort((a, b) => a - b);
+// let i = 0;
+// let j = sortedNumbers.length - 1;
+
+// while (i < j) {
+//   while (sortedNumbers[i] === sortedNumbers[i + 1]) {
+//     i++;
+//   }
+//   while (sortedNumbers[j] === sortedNumbers[j - 1]) {
+//     j--;
+//   }
+//   if (sortedNumbers[i] + sortedNumbers[j] === target) {
+//     console.log(`${sortedNumbers[i]} and ${sortedNumbers[j]} sum to ${target}`);
+//     return true;
+//   }
+//   else if (sortedNumbers[i] + sortedNumbers[j] < target) {
+//     i++;
+//   } else {
+//     j--;
+//   }
+// }
+
+
+// const numbers = [8, 9, 12, 3, 5, 9, 1, 11, 4, 8];
+// const target = 17;
+
+
+// function longestWord(str) {
+//   const words = str.split(" ");
+//   let longest = "";
+//   length = 0;
+//   for (word of words){
+//     if (word.length > length){
+//         longest = word;
+//         length = word.length;
+//     }
+//   }
+//   return longest;
+// }
+
+// console.log(longestWord("the quick brown fox"));
+// console.log(longestWord("cat elephant dog"));
+// console.log(longestWord("one two six ten"));
+
+
+function isAnagram(a, b) {
+  if (a.length !== b.length) {
+    return false;
+  }else{
+    aMap = new Map(a.split("").map((ch, i) => [ch, i]));
+    bMap = new Map(b.split("").map((ch, i) => [ch, i]));
+    for (const [key, val] of aMap){
+        if ((bMap.get(key) !== val) || !bMap.has(key)){
+            return false;
         }
-       
     }
+    return true;
+  }
 }
 
-const data = {
-    "ax01":{name: "Ray", age:28, salary: 1300},
-    "qs84":{name: "Lucius", age:31, salary: 840},
-    "bg33":{name: "Taylor", age:18, salary: 2700}
-}
 
-function findEmployeeSalary(employeeID){
-    return data[employeeID]?.salary;
-}
+console.log(isAnagram("listen", "silent")); // true
+console.log(isAnagram("hello", "world")); // false
+console.log(isAnagram("car", "cat")); // true
