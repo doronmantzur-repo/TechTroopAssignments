@@ -1,6 +1,5 @@
 
 export const myBank = function(){
-  
 let balance = 0;
   return {
     checkBalance: () => {
