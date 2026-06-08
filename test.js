@@ -161,10 +161,8 @@
 //   }
 // }
 
-
 // const numbers = [8, 9, 12, 3, 5, 9, 1, 11, 4, 8];
 // const target = 17;
-
 
 // function longestWord(str) {
 //   const words = str.split(" ");
@@ -183,23 +181,88 @@
 // console.log(longestWord("cat elephant dog"));
 // console.log(longestWord("one two six ten"));
 
+// function isAnagram(a, b) {
+//   if (a.length !== b.length) {
+//     return false;
+//   }else{
+//     aMap = new Map(a.split("").map((ch, i) => [ch, i]));
+//     bMap = new Map(b.split("").map((ch, i) => [ch, i]));
+//     for (const [key, val] of aMap){
+//         if ((bMap.get(key) !== val) || !bMap.has(key)){
+//             return false;
+//         }
+//     }
+//     return true;
+//   }
+// }
 
-function isAnagram(a, b) {
-  if (a.length !== b.length) {
-    return false;
-  }else{
-    aMap = new Map(a.split("").map((ch, i) => [ch, i]));
-    bMap = new Map(b.split("").map((ch, i) => [ch, i]));
-    for (const [key, val] of aMap){
-        if ((bMap.get(key) !== val) || !bMap.has(key)){
-            return false;
-        }
-    }
-    return true;
+// console.log(isAnagram("listen", "silent")); // true
+// console.log(isAnagram("hello", "world")); // false
+// console.log(isAnagram("car", "cat")); // true
+
+// Given an array of integers and a target number, return all pairs
+// of elements that add up to the target. Each pair should be returned
+// as an array of two numbers, and you should return an array of all pairs.
+// Avoid duplicate pairs.
+//
+// Constraints: the array may contain positive and negative integers.
+// A number cannot be paired with itself at the same index.
+//
+// Hint: think about every possible combination of two elements,
+// then check if they add up to the target.
+//
+// Input:  [1, 2, 3, 4, 5], target 6  →  Output: [[1,5], [2,4]]
+// Input:  [1, 1, 2, 3],    target 4  →  Output: [[1,3]]
+// Input:  [0, -1, 2, -3],  target -1 →  Output: [[0,-1], [2,-3]]
+
+// function findPairs(arr, target) {
+//   // your code here
+//   const dataObj = {};
+//   pairArr = [];
+//   for (const element of arr) {
+//     if (!dataObj[element]) {
+//       dataObj[element] = 1;
+//     }
+//     else{
+//       dataObj[element]++;
+//     }
+//     requested = target - element;
+//     if (dataObj[requested] && (requested !== element) && (dataObj[requested] > 1)) {
+//       // Handle the case where the requested number exists in the object
+//       pairArr.push([element, requested]);
+//     }
+//   }
+//   return pairArr;
+// }
+
+// // Tests
+// console.log(findPairs([1, 2, 3, 4, 5], 6)); // → [[1,5], [2,4]]
+// console.log(findPairs([1, 1, 2, 3], 4));     // → [[1,3]]
+// console.log(findPairs([0, -1, 2, -3], -1));  // → [[0,-1], [2,-3]]
+
+//9
+// Given a string of words separated by spaces, return the sentence
+// with the word order reversed. The words themselves should stay intact.
+//
+// Constraints: the string will always have at least one word.
+// You may not use any built-in reverse functions.
+//
+// Input:  "hello world"          →  Output: "world hello"
+// Input:  "the quick brown fox"  →  Output: "fox brown quick the"
+// Input:  "one"                  →  Output: "one"
+
+function reverseWords(str) {
+  let strArr = str.split(" ");
+  let result = [];
+
+  for (let i = strArr.length; i > 0; i--) {
+    item = strArr[i - 1];
+    result.push(item);
   }
+  return result.join(" ");
 }
 
-
-console.log(isAnagram("listen", "silent")); // true
-console.log(isAnagram("hello", "world")); // false
-console.log(isAnagram("car", "cat")); // true
+// Tests
+console.log(reverseWords("hello world")); // → "world hello"
+console.log(reverseWords("the quick brown fox")); // → "fox brown quick the"
+console.log(reverseWords("one")); // → "one"
