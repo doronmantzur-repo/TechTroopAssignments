@@ -251,18 +251,88 @@
 // Input:  "the quick brown fox"  →  Output: "fox brown quick the"
 // Input:  "one"                  →  Output: "one"
 
-function reverseWords(str) {
-  let strArr = str.split(" ");
-  let result = [];
+// function reverseWords(str) {
+//   let strArr = str.split(" ");
+//   let result = [];
 
-  for (let i = strArr.length; i > 0; i--) {
-    item = strArr[i - 1];
-    result.push(item);
+//   for (let i = strArr.length; i > 0; i--) {
+//     item = strArr[i - 1];
+//     result.push(item);
+//   }
+//   return result.join(" ");
+// }
+
+// // Tests
+// console.log(reverseWords("hello world")); // → "world hello"
+// console.log(reverseWords("the quick brown fox")); // → "fox brown quick the"
+// console.log(reverseWords("one")); // → "one"
+
+// #10
+// Given a sorted array of integers, remove the duplicates in-place
+// so each element appears only once, and return the new length.
+// The array is sorted, so duplicates will always be adjacent.
+//
+// Constraints: do not create a new array, modify the original in-place.
+// The order of elements must stay the same.
+//
+// Input:  [1, 1, 2, 3, 3, 4]  →  Output: 4  (array becomes [1, 2, 3, 4])
+// Input:  [1, 1, 1, 1]        →  Output: 1  (array becomes [1])
+// Input:  [1, 2, 3]           →  Output: 3  (no duplicates, unchanged)
+
+// function removeDuplicates(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     {
+//       if (arr[i] === arr[i + 1]) {
+//         arr.splice(i, 1);
+//         i--;
+//       }
+//     }
+//   }
+//   console.log(arr);
+//   console.log(arr);
+// }
+
+// // Tests
+// console.log(removeDuplicates([1, 1, 2, 3, 3, 4])); // → 4
+// console.log(removeDuplicates([1, 1, 1, 1])); // → 1
+// console.log(removeDuplicates([1, 2, 3])); // → 3
+
+// #11
+// Given two arrays, return a new array containing only the elements
+// that appear in both arrays. Each element in the result should be unique.
+//
+// Constraints: the result can be in any order.
+// Each element in the result must appear only once even if it
+// appears multiple times in both arrays.
+//
+// Input:  [1, 2, 3, 4], [3, 4, 5, 6]     →  Output: [3, 4]
+// Input:  [1, 1, 2, 3], [1, 2, 2]        →  Output: [1, 2]
+// Input:  [1, 2, 3],    [4, 5, 6]        →  Output: []
+
+function intersection(arr1, arr2) {
+  max = Math.max(arr1.length, arr2.length);
+  const arr1Hash = Array(max+1).fill(false);
+  const arr2Hash = Array(max+1).fill(false);
+
+  for (const element of arr1) {
+    arr1Hash[element] = true;
   }
-  return result.join(" ");
+
+  for (const element of arr2) {
+    arr2Hash[element] = true;
+  }
+
+  const result = [];
+  for (let i = 0; i < max+1; i++) {
+    if (arr1Hash[i] && arr2Hash[i]) {
+      result.push(i);
+    }
+  }
+
+  return result;
 }
 
 // Tests
-console.log(reverseWords("hello world")); // → "world hello"
-console.log(reverseWords("the quick brown fox")); // → "fox brown quick the"
-console.log(reverseWords("one")); // → "one"
+console.log(intersection([1, 2, 3, 4], [3, 4, 5, 6]));  // → [3, 4]
+console.log(intersection([1, 1, 2, 3], [1, 2, 2]));     // → [1, 2]
+console.log(intersection([1, 2, 3], [4, 5, 6]));        // → []

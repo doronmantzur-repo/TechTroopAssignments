@@ -82,82 +82,105 @@ class BSNode {
     }
   }
 
-  getParentOfMaxNode() {
-    if((this.rightChild.rightChild===null)) {
+  getParentMaxLeaveNode(){
+    if(this.leftChild === null){
       return this;
-    }
-    else{
-      return this.rightChild.getParentOfMaxNode();
+    } else {
+      return this;
     }
   }
 
-  disconnectTwoChildsNode(node) {
-    //get the maximum node in the left branch
-    let parentOfMaxNode = node;
-    if (!(node.leftChild.rightChild===null)) {
-      parentOfMaxNode = node.leftChild.getParentOfMaxNode();
+
+  disconnectNode(parentNode) {
+    //if the node has no childs
+    if (this.leftChild === null && this.rightChild === null) { {
+        if (parentNode) {
+          if (parentNode.leftChild === this) {
+            parentNode.leftChild = null;
+          } else {
+            parentNode.rightChild = null;
+          }
+        }
+      }
     }
-    //get the right leave node (there is no right leave node)
-    let disconnectedLeave = parentOfMaxNode.rightChild.leftChild;
-    //connect the max node to the childs of the discoonected node
-    parentOfMaxNode.rightChild.leftChild = node.leftChild;
-    parentOfMaxNode.rightChild.rightChild = node.rightChild;
-    //Replace the root node with the maximum node
-    node = parentOfMaxNode.rightChild;
-    //connect the parent of the max node to the disconnected leave
-    parentOfMaxNode.rightChild = disconnectedLeave;
+    else if (this.leftChild === null && this.rightChild !== null) {
+      if (parentNode) {
+        if (parentNode.leftChild === this) {
+          parentNode.leftChild = this.rightChild;
+        } else {
+          parentNode.rightChild = this.rightChild;
+        }
+      }
+    }
+    else if (this.leftChild !== null && this.rightChild === null) {
+      if (parentNode) {
+        if (parentNode.leftChild === this) {
+          parentNode.leftChild = this.leftChild;
+        } else {
+          parentNode.rightChild = this.leftChild;
+        }
+      }
+    }
+    else if (this.leftChild !== null && this.rightChild !== null) {
+      //get the maximum node in the left branch
+      let maxParentLeaveNode = this.getParentMaxLeaveNode();
+      //get the left leave node (there is no right leave node)
+      let leftLeave = maxParentLeaveNode.rightChild.leftChild;
+      //the root node to be disconnected
+      if (parentNode == null) {
+        this.rightChild = node.rightChild;
+        this.leftChild = node.leftChild;
+        maxParentLeaveNode.rightChild = leftLeave;
+        node.rightChild = null;
+        node.leftChild = null;
+      } 
+      else{
+        this.rightChild = node.rightChild;
+        this.leftChild = node.leftChild;
+        maxParentLeaveNode.rightChild = leftLeave;
+        parentNode.leftChild = this;
+        node.rightChild = null;
+        node.leftChild = null;
+      }
+  }
+
+    // //get the maximum node in the left branch
+    // let parentOfMaxNode = node;
+    // if (!(node.leftChild.rightChild===null)) {
+    //   parentOfMaxNode = node.leftChild.getParentOfMaxNode();
+    // }
+    // //get the left leave node (there is no right leave node)
+    // let disconnectedLeave = parentOfMaxNode.rightChild.leftChild;
+    // //connect the max node to the childs of the discoonected node
+    // parentOfMaxNode.rightChild.leftChild = node.leftChild;
+    // parentOfMaxNode.rightChild.rightChild = node.rightChild;
+    // //Replace the root node with the maximum node
+    // node = parentOfMaxNode.rightChild;
+    // //connect the parent of the max node to the disconnected leave
+    // parentOfMaxNode.rightChild = disconnectedLeave;
   }
 
   removeNode(node, value) {
-    //the root is to be removed
-    if (node.value === value) {
-      this.disconnectTwoChildsNode(node);
-    } else {
-      const parentNode = this.getParentNode(this, value);
-      //right child is the removed target
-      if (parentNode.rightChild && parentNode.rightChild.value === value) {
-        // Handle root node removal
-        let removedNode = parentNode.rightChild;
-        //The removed node has no childs
-        if (!removedNode.leftChild && !removedNode.rightChild) {
-          parentNode.rightChild = null;
-        }
-        //The removed node has just left child
-        else if (removedNode.leftChild && !removedNode.rightChild) {
-          parentNode.rightChild = removedNode.leftChild;
-        }
-        //The removed node has just right child
-        else if (!removedNode.leftChild && removedNode.rightChild) {
-          parentNode.rightChild = removedNode.rightChild;
-        }
-        //The removed node has 2 childs
-        else {
-          removedNode.disconnectTwoChildsNode(removedNode);
-        }
+    let parentNode = null;
+    
+    if (this.value === value) {
+      if(node.value === value) {
+        parentNode = null;
+      }else
+      {
+          parentNode = node;
       }
-      //left child is the removed target
-      else {
-        let removedNode = parentNode.leftChild;
-        //The removed node has no childs
-        if (!removedNode.leftChild && !removedNode.rightChild) {
-          parentNode.leftChild = null;
-        }
-        //The removed node has just left child
-        else if (removedNode.leftChild && !removedNode.rightChild) {
-          parentNode.leftChild = removedNode.leftChild;
-        }
-        //The removed node has just right child
-        else if (!removedNode.leftChild && removedNode.rightChild) {
-          parentNode.rightChild = removedNode.rightChild;
-        }
-        //The removed node has 2 childs
-        else {
-          removedNode.disconnectTwoChildsNode(removedNode);
-        }
-      }
+      this.disconnectNode(parentNode);
+    }
+    else if (value > node.value) {
+      this.rightChild.removeNode(this,value);
+    }
+    else {
+      this.leftChild.removeNode(this,value);
     }
   }
 }
+
 
 const numbers = [8, 9, 12, 3, 5, 1, 11, 4];
 let nodeWithOneChild = new BSNode();
