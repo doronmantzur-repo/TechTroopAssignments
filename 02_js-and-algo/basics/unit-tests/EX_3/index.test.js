@@ -7,4 +7,4 @@ describe("Should simplify the array", () => {
         expect(simplify("")).toBe("");
         expect(simplify("!@#$%^&*()")).toBe("@$%^&*()");
     });
-});
+}); 

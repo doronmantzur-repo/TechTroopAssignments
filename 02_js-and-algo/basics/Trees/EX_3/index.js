@@ -82,18 +82,18 @@ class BSNode {
     }
   }
 
-  getParentMaxLeaveNode(){
-    if(this.leftChild === null){
+  getParentMaxLeaveNode() {
+    if (this.leftChild === null) {
       return this;
     } else {
       return this;
     }
   }
 
-
   disconnectNode(parentNode) {
     //if the node has no childs
-    if (this.leftChild === null && this.rightChild === null) { {
+    if (this.leftChild === null && this.rightChild === null) {
+      {
         if (parentNode) {
           if (parentNode.leftChild === this) {
             parentNode.leftChild = null;
@@ -102,8 +102,7 @@ class BSNode {
           }
         }
       }
-    }
-    else if (this.leftChild === null && this.rightChild !== null) {
+    } else if (this.leftChild === null && this.rightChild !== null) {
       if (parentNode) {
         if (parentNode.leftChild === this) {
           parentNode.leftChild = this.rightChild;
@@ -111,8 +110,7 @@ class BSNode {
           parentNode.rightChild = this.rightChild;
         }
       }
-    }
-    else if (this.leftChild !== null && this.rightChild === null) {
+    } else if (this.leftChild !== null && this.rightChild === null) {
       if (parentNode) {
         if (parentNode.leftChild === this) {
           parentNode.leftChild = this.leftChild;
@@ -120,67 +118,47 @@ class BSNode {
           parentNode.rightChild = this.leftChild;
         }
       }
-    }
-    else if (this.leftChild !== null && this.rightChild !== null) {
+    } else if (this.leftChild !== null && this.rightChild !== null) {
       //get the maximum node in the left branch
       let maxParentLeaveNode = this.getParentMaxLeaveNode();
       //get the left leave node (there is no right leave node)
       let leftLeave = maxParentLeaveNode.rightChild.leftChild;
       //the root node to be disconnected
       if (parentNode == null) {
-        this.rightChild = node.rightChild;
-        this.leftChild = node.leftChild;
+        this.rightChild = maxParentLeaveNode.rightChild;
+        this.leftChild = maxParentLeaveNode.leftChild;
         maxParentLeaveNode.rightChild = leftLeave;
-        node.rightChild = null;
-        node.leftChild = null;
-      } 
-      else{
-        this.rightChild = node.rightChild;
-        this.leftChild = node.leftChild;
+        this.rightChild = null;
+        this.leftChild = null;
+      } else {
+        this.rightChild = parentNode.rightChild;
+        this.leftChild = parentNode.leftChild;
         maxParentLeaveNode.rightChild = leftLeave;
         parentNode.leftChild = this;
-        node.rightChild = null;
-        node.leftChild = null;
+        parentNode.rightChild = null;
+        parentNode.leftChild = null;
       }
-  }
-
-    // //get the maximum node in the left branch
-    // let parentOfMaxNode = node;
-    // if (!(node.leftChild.rightChild===null)) {
-    //   parentOfMaxNode = node.leftChild.getParentOfMaxNode();
-    // }
-    // //get the left leave node (there is no right leave node)
-    // let disconnectedLeave = parentOfMaxNode.rightChild.leftChild;
-    // //connect the max node to the childs of the discoonected node
-    // parentOfMaxNode.rightChild.leftChild = node.leftChild;
-    // parentOfMaxNode.rightChild.rightChild = node.rightChild;
-    // //Replace the root node with the maximum node
-    // node = parentOfMaxNode.rightChild;
-    // //connect the parent of the max node to the disconnected leave
-    // parentOfMaxNode.rightChild = disconnectedLeave;
+    }
   }
 
   removeNode(node, value) {
     let parentNode = null;
-    
+
     if (this.value === value) {
-      if(node.value === value) {
+      if (node.value === value) {
         parentNode = null;
-      }else
-      {
-          parentNode = node;
+      } else {
+        parentNode = node;
       }
       this.disconnectNode(parentNode);
+    } else if (value > node.value) {
+      this.rightChild.removeNode(this, value);
+    } else {
+      this.leftChild.removeNode(this, value);
     }
-    else if (value > node.value) {
-      this.rightChild.removeNode(this,value);
-    }
-    else {
-      this.leftChild.removeNode(this,value);
-    }
+    return node;
   }
 }
-
 
 const numbers = [8, 9, 12, 3, 5, 1, 11, 4];
 let nodeWithOneChild = new BSNode();

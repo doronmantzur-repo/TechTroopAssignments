@@ -309,30 +309,111 @@
 // Input:  [1, 1, 2, 3], [1, 2, 2]        →  Output: [1, 2]
 // Input:  [1, 2, 3],    [4, 5, 6]        →  Output: []
 
-function intersection(arr1, arr2) {
-  max = Math.max(arr1.length, arr2.length);
-  const arr1Hash = Array(max+1).fill(false);
-  const arr2Hash = Array(max+1).fill(false);
+// function intersection(arr1, arr2) {
+//   max = Math.max(arr1.length, arr2.length);
+//   const arr1Hash = Array(max+1).fill(false);
+//   const arr2Hash = Array(max+1).fill(false);
 
-  for (const element of arr1) {
-    arr1Hash[element] = true;
-  }
+//   for (const element of arr1) {
+//     arr1Hash[element] = true;
+//   }
 
-  for (const element of arr2) {
-    arr2Hash[element] = true;
-  }
+//   for (const element of arr2) {
+//     arr2Hash[element] = true;
+//   }
 
-  const result = [];
-  for (let i = 0; i < max+1; i++) {
-    if (arr1Hash[i] && arr2Hash[i]) {
-      result.push(i);
+//   const result = [];
+//   for (let i = 0; i < max+1; i++) {
+//     if (arr1Hash[i] && arr2Hash[i]) {
+//       result.push(i);
+//     }
+//   }
+
+//   return result;
+// }
+
+// // Tests
+// console.log(intersection([1, 2, 3, 4], [3, 4, 5, 6]));  // → [3, 4]
+// console.log(intersection([1, 1, 2, 3], [1, 2, 2]));     // → [1, 2]
+// console.log(intersection([1, 2, 3], [4, 5, 6]));        // → []
+
+// #13
+// Given a string, return the length of the longest substring
+// that contains no repeating characters.
+//
+// Constraints: the string may contain letters, digits, and spaces.
+// An empty string should return 0.
+//
+// Input:  "abcabcbb"  →  Output: 3  ("abc")
+// Input:  "bbbbb"     →  Output: 1  ("b")
+// Input:  "pwwkew"    →  Output: 3  ("wke")
+// Input:  ""          →  Output: 0
+
+// function lengthOfLongestSubstring(str) {
+//   let strArr = str.split("");
+//   let obj = {};
+//   let longest = 0;
+//   for(let i=0; i<strArr.length; i++){
+//     const char = strArr[i];
+//     if (!obj[char]) {
+//       obj[char] = 1;
+//     }
+//     else
+//     {
+//       longest = i;
+//       break;
+//     }
+//   }
+//   return longest;
+// }
+
+// // Tests
+// console.log(lengthOfLongestSubstring("abcabcbb")); // → 3
+// console.log(lengthOfLongestSubstring("bbbbb"));    // → 1
+// console.log(lengthOfLongestSubstring("pwwkew"));   // → 3
+// console.log(lengthOfLongestSubstring(""));         // → 0
+
+// #14
+// Given an array of integers, move all zeros to the end
+// while keeping the relative order of non-zero elements.
+// Do this in-place, do not create a new array.
+//
+// Constraints: modify the original array in-place.
+// The order of non-zero elements must stay the same.
+// Do not use any extra arrays, objects, or sets.
+//
+// Input:  [0, 1, 0, 3, 12]  →  Output: [1, 3, 12, 0, 0]
+// Input:  [0, 0, 1]         →  Output: [1, 0, 0]
+// Input:  [1, 2, 3]         →  Output: [1, 2, 3]  (no zeros, unchanged)
+// Input:  [0, 0, 0]         →  Output: [0, 0, 0]  (all zeros)
+
+function moveZeros(arr) {
+
+  let count = 0;
+  for (let num of arr) {
+    if (num === 0) {
+      count++;
     }
   }
 
-  return result;
+  let pointer = 0;
+  for(let i =0 ; i< arr.length; i++)
+  {
+    if (arr[i] !== 0){
+      arr[pointer] = arr[i];
+      pointer++;
+    }
+  }
+
+  for(;pointer< arr.length; pointer++)
+  {
+    arr[pointer] = 0
+  }
+  return arr;
 }
 
 // Tests
-console.log(intersection([1, 2, 3, 4], [3, 4, 5, 6]));  // → [3, 4]
-console.log(intersection([1, 1, 2, 3], [1, 2, 2]));     // → [1, 2]
-console.log(intersection([1, 2, 3], [4, 5, 6]));        // → []
+console.log(moveZeros([0, 1, 0, 3, 12])); // → [1, 3, 12, 0, 0]
+console.log(moveZeros([0, 0, 1])); // → [1, 0, 0]
+console.log(moveZeros([1, 2, 3])); // → [1, 2, 3]
+console.log(moveZeros([0, 0, 0])); // → [0, 0, 0]
