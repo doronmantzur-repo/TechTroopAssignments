@@ -387,33 +387,103 @@
 // Input:  [1, 2, 3]         →  Output: [1, 2, 3]  (no zeros, unchanged)
 // Input:  [0, 0, 0]         →  Output: [0, 0, 0]  (all zeros)
 
-function moveZeros(arr) {
+// function moveZeros(arr) {
 
-  let count = 0;
-  for (let num of arr) {
-    if (num === 0) {
-      count++;
+//   let count = 0;
+//   for (let num of arr) {
+//     if (num === 0) {
+//       count++;
+//     }
+//   }
+
+//   let pointer = 0;
+//   for(let i =0 ; i< arr.length; i++)
+//   {
+//     if (arr[i] !== 0){
+//       arr[pointer] = arr[i];
+//       pointer++;
+//     }
+//   }
+
+//   for(;pointer< arr.length; pointer++)
+//   {
+//     arr[pointer] = 0
+//   }
+//   return arr;
+// }
+
+// // Tests
+// console.log(moveZeros([0, 1, 0, 3, 12])); // → [1, 3, 12, 0, 0]
+// console.log(moveZeros([0, 0, 1])); // → [1, 0, 0]
+// console.log(moveZeros([1, 2, 3])); // → [1, 2, 3]
+// console.log(moveZeros([0, 0, 0])); // → [0, 0, 0]
+
+// function addToShoppingList() {
+//   const input = document.getElementById("itemInput");
+//   const value = input.value;
+
+//   if (value === "") return;
+
+//   const li = document.createElement("li");
+//   li.textContent = value;
+
+//   document.getElementById("shoppingList").appendChild(li);
+
+//   input.value = "";
+// }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   document
+//     .getElementById("add-btn")
+//     .addEventListener("click", addToShoppingList);
+
+//   function addToShoppingList() {
+//     const input = document.getElementById("itemInput");
+//     const value = input.value.trim();
+
+//     if (value === "") return;
+
+//     const li = document.createElement("li");
+//     li.textContent = value;
+
+//     document.getElementById("shoppingList").appendChild(li);
+
+//     input.value = "";
+//   }
+// });
+
+// #14
+// Given a SORTED array of integers and a target number, return true
+// if any two elements add up to the target, false otherwise.
+//
+// Constraints: the array is sorted in ascending order.
+// You may not use any extra arrays, objects, or hash maps.
+//
+// Input:  [1, 2, 3, 4, 6], target 6   →  Output: true   (2 + 4 = 6)
+// Input:  [1, 2, 3, 4, 6], target 11  →  Output: false  (max pair is 4+6=10)
+// Input:  [-2, 1, 3, 5, 8], target 6  →  Output: true   (1 + 5 = 6)
+
+function hasPairWithSum(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+  while (right > left) {
+    let sum = arr[left] + arr[right];
+    if (arr[left] + arr[right] === target){
+      return true;
+    }
+    else if(sum > target){
+      right--;
+    }
+    else{
+      left++
     }
   }
+  return false;
 
-  let pointer = 0;
-  for(let i =0 ; i< arr.length; i++)
-  {
-    if (arr[i] !== 0){
-      arr[pointer] = arr[i];
-      pointer++;
-    }
-  }
-
-  for(;pointer< arr.length; pointer++)
-  {
-    arr[pointer] = 0
-  }
-  return arr;
+  // your code here
 }
 
 // Tests
-console.log(moveZeros([0, 1, 0, 3, 12])); // → [1, 3, 12, 0, 0]
-console.log(moveZeros([0, 0, 1])); // → [1, 0, 0]
-console.log(moveZeros([1, 2, 3])); // → [1, 2, 3]
-console.log(moveZeros([0, 0, 0])); // → [0, 0, 0]
+console.log(hasPairWithSum([1, 2, 3, 4, 6], 6)); // → true
+console.log(hasPairWithSum([1, 2, 3, 4, 6], 11)); // → false
+console.log(hasPairWithSum([-2, 1, 3, 5, 8], 6)); // → true
