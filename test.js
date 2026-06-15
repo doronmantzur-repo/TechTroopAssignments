@@ -463,27 +463,201 @@
 // Input:  [1, 2, 3, 4, 6], target 11  →  Output: false  (max pair is 4+6=10)
 // Input:  [-2, 1, 3, 5, 8], target 6  →  Output: true   (1 + 5 = 6)
 
-function hasPairWithSum(arr, target) {
-  let left = 0;
-  let right = arr.length - 1;
-  while (right > left) {
-    let sum = arr[left] + arr[right];
-    if (arr[left] + arr[right] === target){
-      return true;
-    }
-    else if(sum > target){
-      right--;
-    }
-    else{
-      left++
-    }
-  }
-  return false;
+// function hasPairWithSum(arr, target) {
+//   let left = 0;
+//   let right = arr.length - 1;
+//   while (right > left) {
+//     let sum = arr[left] + arr[right];
+//     if (arr[left] + arr[right] === target){
+//       return true;
+//     }
+//     else if(sum > target){
+//       right--;
+//     }
+//     else{
+//       left++
+//     }
+//   }
+//   return false;
 
-  // your code here
-}
+//   // your code here
+// }
 
-// Tests
-console.log(hasPairWithSum([1, 2, 3, 4, 6], 6)); // → true
-console.log(hasPairWithSum([1, 2, 3, 4, 6], 11)); // → false
-console.log(hasPairWithSum([-2, 1, 3, 5, 8], 6)); // → true
+// // Tests
+// console.log(hasPairWithSum([1, 2, 3, 4, 6], 6)); // → true
+// console.log(hasPairWithSum([1, 2, 3, 4, 6], 11)); // → false
+// console.log(hasPairWithSum([-2, 1, 3, 5, 8], 6)); // → true
+
+// let counter =0;
+// let offTheTableCounter = 0
+
+// function coinFlipPromise() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const random = Math.random();
+//       if (random < 0.1) {
+//         reject("Dice fall of the table");
+//       } else {
+//         resolve("Dice OK");
+//       }
+//     }, 500);
+//   });
+// }
+
+// coinFlipPromise()
+//   .then((result) => {
+//     counter++;
+//     console.log(result);
+//   })
+//   .catch((result) => {
+//     counter++;
+//     ofTheTableCounter++;
+//     console.log(`result - ${offTheTableCounter/counter}`);
+
+//   });
+
+// function test() {
+//   return new Promise((resolve, reject) => {
+//   });
+// }
+
+// test()
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((result) => {
+//     console.log(result);
+
+// });
+
+// function oldAsyncFunction(callback) {
+//   setTimeout(() => {
+//     if (Math.random() > 0.5) {
+//       callback(null, "Success");
+//     } else {
+//       callback(new Error("Failed"));
+//     }
+//   }, 1000);
+// }
+
+// oldAsyncFunction(test);
+
+// #15
+// Given an array of integers and a number K, find the maximum sum
+// of any K consecutive elements in the array.
+//
+// Constraints: K will always be less than or equal to the array length.
+// The array will contain at least K elements.
+//
+// Input:  [2, 1, 5, 1, 3, 2], K=3  →  Output: 9   (5+1+3)
+// Input:  [1, 2, 3, 4, 5],    K=2  →  Output: 9   (4+5)
+// Input:  [4, 4, 4, 4],       K=1  →  Output: 4
+
+// function maxSumSubarray(arr, k) {
+//   let maxSum = Number.NEGATIVE_INFINITY;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (i + k <= arr.length) {
+//       let localSum = 0;
+//       for (let index = i; index < i + k; index++) {
+//         localSum += arr[index];
+//       }
+//       if (localSum > maxSum) maxSum = localSum;
+//     }
+//     else
+//     {
+//       break;
+//     }
+//   }
+//   return maxSum;
+// }
+
+// // Tests
+// console.log(maxSumSubarray([2, 1, 5, 1, 3, 2], 3)); // → 9
+// console.log(maxSumSubarray([1, 2, 3, 4, 5], 2)); // → 9
+// console.log(maxSumSubarray([4, 4, 4, 4], 1)); // → 4
+
+const getRandomWord = function () {
+  let words = [
+    "Bonanza",
+    "Elusive",
+    "Hindrance",
+    "Astute",
+    "Polaroid",
+    "Phonic",
+    "Yonder",
+  ];
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(words[Math.floor(Math.random() * words.length)]);
+    }, 1000);
+  });
+};
+
+const getSynonyms = function (word) {
+  let thesauraus = {
+    Absolute: ["Definitive", "Certain", "Sure", "Unequivocal"],
+    Astute: ["Sharp", "Poignant", "Clever"],
+    Azure: ["Blue", "Cyan", "Sky-blue"],
+    Bright: ["Luminous", "Brilliant"],
+    Bonanza: ["Plethora", "Smorgasboard", "Copious", "Plenty"],
+    Elusive: ["Slick", "Slippery", "Ethereal", "Loose"],
+    Erode: ["Destroy", "Wear out", "Tarnish"],
+    Hindrance: ["Bother", "Disturbance", "Problematic"],
+    Phonic: ["Soundful"],
+    Ploy: ["Plan", "Ruse"],
+    Polaroid: ["Photograph"],
+    Yap: ["Bark", "Blab", "Chatter"],
+    Yonder: ["There", "Away", "Far", "Afar"],
+  };
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(thesauraus[word]);
+    }, 1000);
+  });
+};
+
+const getSentiment = function (word) {
+  let wordSentiment = {
+    Definitive: 1,
+    Sharp: 1,
+    Blue: 0,
+    Luminous: 1,
+    Plethora: 1,
+    Slick: -1,
+    Destroy: -1,
+    Bother: -1,
+    Soundful: 0,
+    Plan: 0,
+    Photograph: 0,
+    Bark: -1,
+    There: -1,
+  };
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(wordSentiment[word]);
+    }, 1000);
+  });
+};
+
+// No need for promises here
+const getSentimentDescription = function (sentiment) {
+  return sentiment === 1
+    ? "Positive"
+    : sentiment === -1
+      ? "Negative"
+      : "Neutral";
+};
+
+getRandomWord()
+  .then((word) => {
+    console.log(word);
+    return getSynonyms(word);
+  })
+  .then((synonyms) => {
+    console.log(synonyms);
+    return getSentiment(synonyms[0]);
+  })
+  .then((sentiment) => {
+    console.log(sentiment);
+    console.log(getSentimentDescription(sentiment));
+  });
