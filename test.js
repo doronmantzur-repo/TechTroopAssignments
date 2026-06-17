@@ -576,88 +576,140 @@
 // console.log(maxSumSubarray([1, 2, 3, 4, 5], 2)); // → 9
 // console.log(maxSumSubarray([4, 4, 4, 4], 1)); // → 4
 
-const getRandomWord = function () {
-  let words = [
-    "Bonanza",
-    "Elusive",
-    "Hindrance",
-    "Astute",
-    "Polaroid",
-    "Phonic",
-    "Yonder",
-  ];
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(words[Math.floor(Math.random() * words.length)]);
-    }, 1000);
-  });
-};
+// const getRandomWord = function () {
+//   let words = [
+//     "Bonanza",
+//     "Elusive",
+//     "Hindrance",
+//     "Astute",
+//     "Polaroid",
+//     "Phonic",
+//     "Yonder",
+//   ];
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(words[Math.floor(Math.random() * words.length)]);
+//     }, 1000);
+//   });
+// };
 
-const getSynonyms = function (word) {
-  let thesauraus = {
-    Absolute: ["Definitive", "Certain", "Sure", "Unequivocal"],
-    Astute: ["Sharp", "Poignant", "Clever"],
-    Azure: ["Blue", "Cyan", "Sky-blue"],
-    Bright: ["Luminous", "Brilliant"],
-    Bonanza: ["Plethora", "Smorgasboard", "Copious", "Plenty"],
-    Elusive: ["Slick", "Slippery", "Ethereal", "Loose"],
-    Erode: ["Destroy", "Wear out", "Tarnish"],
-    Hindrance: ["Bother", "Disturbance", "Problematic"],
-    Phonic: ["Soundful"],
-    Ploy: ["Plan", "Ruse"],
-    Polaroid: ["Photograph"],
-    Yap: ["Bark", "Blab", "Chatter"],
-    Yonder: ["There", "Away", "Far", "Afar"],
-  };
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(thesauraus[word]);
-    }, 1000);
-  });
-};
+// const getSynonyms = function (word) {
+//   let thesauraus = {
+//     Absolute: ["Definitive", "Certain", "Sure", "Unequivocal"],
+//     Astute: ["Sharp", "Poignant", "Clever"],
+//     Azure: ["Blue", "Cyan", "Sky-blue"],
+//     Bright: ["Luminous", "Brilliant"],
+//     Bonanza: ["Plethora", "Smorgasboard", "Copious", "Plenty"],
+//     Elusive: ["Slick", "Slippery", "Ethereal", "Loose"],
+//     Erode: ["Destroy", "Wear out", "Tarnish"],
+//     Hindrance: ["Bother", "Disturbance", "Problematic"],
+//     Phonic: ["Soundful"],
+//     Ploy: ["Plan", "Ruse"],
+//     Polaroid: ["Photograph"],
+//     Yap: ["Bark", "Blab", "Chatter"],
+//     Yonder: ["There", "Away", "Far", "Afar"],
+//   };
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(thesauraus[word]);
+//     }, 1000);
+//   });
+// };
 
-const getSentiment = function (word) {
-  let wordSentiment = {
-    Definitive: 1,
-    Sharp: 1,
-    Blue: 0,
-    Luminous: 1,
-    Plethora: 1,
-    Slick: -1,
-    Destroy: -1,
-    Bother: -1,
-    Soundful: 0,
-    Plan: 0,
-    Photograph: 0,
-    Bark: -1,
-    There: -1,
-  };
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(wordSentiment[word]);
-    }, 1000);
-  });
-};
+// const getSentiment = function (word) {
+//   let wordSentiment = {
+//     Definitive: 1,
+//     Sharp: 1,
+//     Blue: 0,
+//     Luminous: 1,
+//     Plethora: 1,
+//     Slick: -1,
+//     Destroy: -1,
+//     Bother: -1,
+//     Soundful: 0,
+//     Plan: 0,
+//     Photograph: 0,
+//     Bark: -1,
+//     There: -1,
+//   };
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(wordSentiment[word]);
+//     }, 1000);
+//   });
+// };
 
-// No need for promises here
-const getSentimentDescription = function (sentiment) {
-  return sentiment === 1
-    ? "Positive"
-    : sentiment === -1
-      ? "Negative"
-      : "Neutral";
-};
+// // No need for promises here
+// const getSentimentDescription = function (sentiment) {
+//   return sentiment === 1
+//     ? "Positive"
+//     : sentiment === -1
+//       ? "Negative"
+//       : "Neutral";
+// };
 
-getRandomWord()
-  .then((word) => {
-    console.log(word);
-    return getSynonyms(word);
-  })
-  .then((synonyms) => {
-    console.log(synonyms);
-    return getSentiment(synonyms[0]);
-  })
-  .then((sentiment) => {
-    console.log(sentiment);
-    console.log(getSentimentDescription(sentiment));
-  });
+// getRandomWord()
+//   .then((word) => {
+//     console.log(word);
+//     return getSynonyms(word);
+//   })
+//   .then((synonyms) => {
+//     console.log(synonyms);
+//     return getSentiment(synonyms[0]);
+//   })
+//   .then((sentiment) => {
+//     console.log(sentiment);
+//     console.log(getSentimentDescription(sentiment));
+//   });
+
+// fu
+
+// #17
+// Given a string and a number K, return the maximum number of vowels
+// in any substring of length K.
+// Vowels are: a, e, i, o, u (lowercase only).
+//
+// Constraints: K will always be less than or equal to the string length.
+// The string will only contain lowercase letters.
+// You may not use any built-in methods to count vowels.
+//
+// Hint: count vowels in the first K characters as your starting window.
+// As the window slides forward, what character leaves and what enters?
+//
+// Input:  "abciiidef", K=3  →  Output: 3  ("iii")
+// Input:  "aeiou",     K=2  →  Output: 2  ("ae", "ei", "io", "ou" all have 2)
+// Input:  "leetcode",  K=3  →  Output: 2  ("lee", "eet", "ode")
+
+function countKLeters(arr, startIndex, k) {
+  let maxCount = 0;
+  const vowels = "aeiou";
+  for (let i = startIndex; i < startIndex + k; i++) {
+    if (vowels.includes(arr[i])) maxCount++;
+  }
+  return maxCount;
+}
+
+function maxVowels(str, k) {
+  const vowels = "aeiou";
+  const strArr = str.split("");
+  let maxCount = countKLeters(strArr, 0, k);
+
+  let localCounter = maxCount;
+  for (let i = 1; i++; i < (str.length - k)) {
+    if (vowels.includes(strArr[i - 1])) {
+      localCounter--;
+    }
+    if (vowels.includes(strArr[i +k - 1])) {
+      localCounter++;
+    }
+    if(localCounter > maxCount){
+      maxCount = localCounter
+    }
+  }
+  return maxCount;
+}
+
+// Tests
+console.log(maxVowels("abciiidef", 3)); // → 3
+// console.log(maxVowels("aeiou", 2)); // → 2
+// console.log(maxVowels("leetcode", 3)); // → 2
