@@ -53,25 +53,11 @@ async function getUserPost(posts, userId) {
   };
 }
 
-function countCommentsForUser(userId, posts, comments) {
-  // Step 1: get all post IDs that belong to this user
-  const userPostIds = posts
-    .filter((post) => post.userId === userId)
-    .map((post) => post.id);
-
-  // Step 2: count comments whose postId is in that list
-  const totalComments = comments.filter((comment) =>
-    userPostIds.includes(comment.postId),
-  ).length;
-
-  return totalComments;
-}
 
 function getUserWithMostPosts(posts) {
   const counts = {};
   const postsByUser = {};
 
-  // Count posts and group posts by userId
   for (const post of posts) {
     const uid = post.userId;
 
@@ -81,7 +67,7 @@ function getUserWithMostPosts(posts) {
     postsByUser[uid].push(post);
   }
 
-  // Find user with the most posts
+
   let maxUserId = null;
   let maxCount = 0;
 
@@ -115,15 +101,23 @@ async function getProcessedData() {
   let totalComments = data.comments.length;
   let averagePostsPerUser = totalPosts / totalUsers;
   let averageCommentsPerPost = totalComments / totalPosts;
+ 
+  //first user
+  let firstMostPostUser = getUserWithMostPosts(data.posts);
+  let firstMostUserName = getUserNameById(data.user, firstMostPostUser.userId);
+  let firstCommentsForUserPost = getNumOfCommentsPerPosts(data.comments, firstMostPostUser.posts); 
 
-  let mostPostUser = getUserWithMostPosts(data.posts);
-  let mostUserName = await getUserNameById(data.user, mostPostUser.userId);
-  let comments = countCommentsForUser(
-    mostPostUser.userId,
-    data.comments,
-    data.posts,
-  );
-  let commentsForUserPost = getNumOfCommentsPerPosts(data.comments, mostPostUser.posts); 
+  //second user
+  const postExludingFirstUser = data.posts.filter((post) => (post.userId !== firstMostPostUser.userId))
+  let secondMostPostUser = getUserWithMostPosts(postExludingFirstUser);
+  let secondMostUserName = getUserNameById(data.user, secondMostPostUser.userId);
+  let secondCommentsForUserPost = getNumOfCommentsPerPosts(data.comments, secondMostPostUser.posts); 
+
+  //Third user
+  const postExludingSecondtUser = data.posts.filter((post) => (post.userId !== secondMostPostUser.userId))
+  let thirdMostPostUser = getUserWithMostPosts(postExludingSecondtUser);
+  let thirdMostUserName = getUserNameById(data.user, thirdMostPostUser.userId);
+  let thirdCommentsForUserPost = getNumOfCommentsPerPosts(data.comments, thirdMostPostUser.posts); 
 
   console.log(
     totalUsers,
@@ -133,10 +127,22 @@ async function getProcessedData() {
     averageCommentsPerPost,
   );
   console.log(
-    mostPostUser.userId,
-    mostPostUser.totalPosts,
-    mostUserName,
-    commentsForUserPost,
+    firstMostPostUser.userId,
+    firstMostPostUser.totalPosts,
+    firstMostUserName,
+    firstCommentsForUserPost,
+  );
+  console.log(
+    secondMostPostUser.userId,
+    secondMostPostUser.totalPosts,
+    secondMostUserName,
+    secondCommentsForUserPost,
+  );
+  console.log(
+    thirdMostPostUser.userId,
+    thirdMostPostUser.totalPosts,
+    thirdMostUserName,
+    thirdCommentsForUserPost,
   );
 }
 
