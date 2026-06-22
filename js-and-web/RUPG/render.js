@@ -38,7 +38,7 @@ export function updateAboutMe(aboutMeText) {
 
 export function saveUser() {
   const user = {};
-
+  
   user.name = document.querySelector("#user-name").innerHTML;
   user.image = document.querySelector(".image-frame").innerHTML;
   user.friends = document.querySelector(".right").innerHTML;
