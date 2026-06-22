@@ -6,7 +6,6 @@ import {
   saveUser,
   loadUser,
   deleteSavedUsers,
-  disableUserButton,
 } from "./render.js";
 
 const usersArr = [];
