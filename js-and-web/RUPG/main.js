@@ -57,7 +57,6 @@ function getPokemon() {
   axios
     .get(poiUrl)
     .then((res) => {
-      console.log(res.data);
       updatePokemon({
         name: res.data.name,
         imgUrl: res.data.sprites.back_default,
