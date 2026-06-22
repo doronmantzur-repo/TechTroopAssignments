@@ -21,11 +21,6 @@ function getRandomUser() {
   axios
     .get(randomUserUrl)
     .then((res) => {
-      // updateUser({
-      //   name: res.data.results[0].name,
-      //   location: res.data.results[0].location,
-      //   imageUrl: res.data.results[0].picture,
-      // });
       updateUser(res.data.results);
     })
     .catch((err) => console.log(err));
