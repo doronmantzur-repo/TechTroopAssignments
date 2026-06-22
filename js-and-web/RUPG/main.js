@@ -1,9 +1,12 @@
 import {
   updateUser,
-  updateFriends,
   updatequote,
   updatePokemon,
   updateAboutMe,
+  saveUser,
+  loadUser,
+  deleteSavedUsers,
+  disableUserButton,
 } from "./render.js";
 
 const usersArr = [];
@@ -14,17 +17,16 @@ const pockemonImg = "";
 const quote = "";
 
 function getRandomUser() {
-  const randomUserUrl = "https://randomuser.me/api/?format=json";
+  const randomUserUrl = "https://randomuser.me/api/?results=8";
   axios
     .get(randomUserUrl)
     .then((res) => {
-      // console.log(res.data);
-      //console.log(res.data.results[0].name);
-      updateUser({
-        name: res.data.results[0].name,
-        location: res.data.results[0].location,
-        imageUrl: res.data.results[0].picture,
-      });
+      // updateUser({
+      //   name: res.data.results[0].name,
+      //   location: res.data.results[0].location,
+      //   imageUrl: res.data.results[0].picture,
+      // });
+      updateUser(res.data.results);
     })
     .catch((err) => console.log(err));
 }
@@ -36,7 +38,9 @@ function getFriends() {
     axios
       .get(randomUserUrl)
       .then((res) => {
-        updateFriends(res.data.results[0].name);
+        res.data.results.forEach((friend) => {
+          updateFriends(friend.name);
+        });
       })
       .catch((err) => console.log(err));
   }
@@ -59,7 +63,10 @@ function getPokemon() {
     .get(poiUrl)
     .then((res) => {
       // console.log(res.data);
-     updatePokemon({name:res.data.name, imgUrl:res.data.sprites.back_female});
+      updatePokemon({
+        name: res.data.name,
+        imgUrl: res.data.sprites.back_female,
+      });
     })
     .catch((err) => console.log(err));
 }
@@ -77,11 +84,25 @@ function getAboutMeText() {
 
 //Controller
 addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#button").addEventListener("click", () => {
+  let btn = document.querySelector("#button");
+  btn.addEventListener("click", () => {
+    btn.disabled = true;
     getRandomUser();
-    getFriends();
     getQuote();
     getPokemon();
     getAboutMeText();
   });
+
+  document.querySelector("#save-btn").addEventListener("click", () => {
+    saveUser();
+  });
+
+  const usersSelect = document.getElementById("users");
+  usersSelect.addEventListener("change", () => {
+    const userId = usersSelect.value;
+    const text = usersSelect.options[usersSelect.selectedIndex].text;
+    loadUser(userId);
+  });
 });
+
+deleteSavedUsers();
