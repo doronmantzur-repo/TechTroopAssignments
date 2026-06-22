@@ -52,13 +52,15 @@ function getQuote() {
 }
 
 function getPokemon() {
-  const poiUrl = "https://pokeapi.co/api/v2/pokemon/pikachu";
+  let random = Math.floor(Math.random() * 1000) + 1;
+  const poiUrl = `https://pokeapi.co/api/v2/pokemon/${random}`;
   axios
     .get(poiUrl)
     .then((res) => {
+      console.log(res.data);
       updatePokemon({
         name: res.data.name,
-        imgUrl: res.data.sprites.back_female,
+        imgUrl: res.data.sprites.back_default,
       });
     })
     .catch((err) => console.log(err));
