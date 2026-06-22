@@ -46,7 +46,6 @@ function getQuote() {
   axios
     .get(quoteUrl)
     .then((res) => {
-      // console.log(res.data);
       updatequote(res.data);
     })
     .catch((err) => console.log(err));
@@ -57,7 +56,6 @@ function getPokemon() {
   axios
     .get(poiUrl)
     .then((res) => {
-      // console.log(res.data);
       updatePokemon({
         name: res.data.name,
         imgUrl: res.data.sprites.back_female,
