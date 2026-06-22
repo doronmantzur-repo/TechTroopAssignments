@@ -95,7 +95,7 @@ addEventListener("DOMContentLoaded", () => {
   usersSelect.addEventListener("change", () => {
     const userId = usersSelect.value;
     const text = usersSelect.options[usersSelect.selectedIndex].text;
-    loadUser(userId);
+    if(text !== "Select User") loadUser(userId);
   });
 });
 
