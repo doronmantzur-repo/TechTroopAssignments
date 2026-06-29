@@ -38,7 +38,7 @@ export function updateAboutMe(aboutMeText) {
 
 export function saveUser() {
   const user = {};
-  
+
   user.name = document.querySelector("#user-name").innerHTML;
   user.image = document.querySelector(".image-frame").innerHTML;
   user.friends = document.querySelector(".right").innerHTML;
@@ -48,14 +48,17 @@ export function saveUser() {
   user.aboutMe = document.querySelector(".about-me p").innerText;
 
   const items = JSON.parse(localStorage.getItem("savedUsers")) || [];
-  items.push(user);
-  localStorage.setItem("savedUsers", JSON.stringify(items));
-  const select = document.getElementById("users");
-  const option = document.createElement("option");
-  option.value = userId;
-  userId += 1;
-  option.textContent = user.name.split("<br>")[0];
-  select.appendChild(option);
+  const exists = items.some((u) => u.name === user.name);
+  if (!exists) {
+    items.push(user);
+    localStorage.setItem("savedUsers", JSON.stringify(items));
+    const select = document.getElementById("users");
+    const option = document.createElement("option");
+    option.value = userId;
+    userId += 1;
+    option.textContent = user.name.split("<br>")[0];
+    select.appendChild(option);
+  }
 }
 
 export function loadUser(userId) {

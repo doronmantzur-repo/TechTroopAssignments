@@ -80,6 +80,7 @@ addEventListener("DOMContentLoaded", () => {
   let btn = document.querySelector("#button");
   btn.addEventListener("click", () => {
     btn.disabled = true;
+    usersSelect.value = "";
     getRandomUser();
     getQuote();
     getPokemon();
